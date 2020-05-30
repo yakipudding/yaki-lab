@@ -16,6 +16,7 @@
 .article h4 {
   font-size: 1.2em;
   margin-top: 10px;
+  margin-bottom: 3px;
 }
 .article h5 {
   font-size: 1em;
@@ -32,6 +33,7 @@ ul {
 }
 p {
   white-space:pre-wrap;
+  margin: 5px 0px;
 }
 img {
   max-width: 100%;

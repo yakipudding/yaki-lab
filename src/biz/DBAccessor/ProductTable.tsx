@@ -30,7 +30,7 @@ export const getProducts = async (includePrivate?: boolean) => {
   return products
 }
 
-// 記事取得（記事詳細）
+// プロダクト記事取得（プロダクト記事詳細）
 export const getProduct = async (productId: string, getArticleId: string) => {
   // プロダクト取得
   const productDoc = await productsTable.doc(productId).get()
