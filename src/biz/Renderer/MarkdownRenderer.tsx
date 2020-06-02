@@ -10,6 +10,13 @@ rendererArticle.heading = (text: string, orgLevel: number) => {
             ${text}
           </h${level}>`;
 };
+// link
+rendererArticle.link = (href: string, title: string, text: string) => {
+  return `
+          <a href="${href}" target="_blank">
+            ${text}
+          </a>`;
+}
 
 export default rendererArticle;
 
@@ -23,6 +30,13 @@ rendererProject.heading = (text: string, orgLevel: number) => {
             ${text}
           </h${level}>`;
 };
+// link
+rendererProject.link = (href: string, title: string, text: string) => {
+  return `
+          <a href="${href}" target="_blank">
+            ${text}
+          </a>`;
+}
 
 export { rendererProject };
 
