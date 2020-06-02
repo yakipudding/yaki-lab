@@ -5,7 +5,7 @@ import CreateIcon from '@material-ui/icons/Create';
 import MaterialTable, { Column } from 'material-table';
 import { ProductInterface } from '../../../biz/Definition/Interfaces'
 import { PageProps } from '../../../biz/Definition/Types'
-import { getProducts, updateProductWithoutContent, deleteProduct } from '../../../biz/DBAccessor/ProductTable'
+import { getProducts, updateProduct, deleteProduct } from '../../../biz/DBAccessor/ProductTable'
 import Loading from '../../common/FeedBack/Loading'
 
 // 管理者用プロダクトダッシュボード
@@ -43,7 +43,7 @@ const onRowUpdate = (newData : ProductInterface, oldData : ProductInterface | un
       resolve();
       if (oldData) {
         // firestore更新
-        updateProductWithoutContent(newData)
+        updateProduct(newData)
         setState(prevState => {
           const data = [...prevState.data];
           data[data.indexOf(oldData)] = newData;
