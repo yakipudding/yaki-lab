@@ -9,18 +9,18 @@
 }
 .article h3 {
   font-size: 1.3em;
-  margin-top: 20px;
+  margin-top: 25px;
   margin-bottom: 3px;
   border-bottom: 1px solid rgba(199, 145, 0, 0.3);
 }
 .article h4 {
   font-size: 1.2em;
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 3px;
 }
 .article h5 {
   font-size: 1em;
-  margin-top: 8px;
+  margin-top: 15px;
   margin-bottom: 3px;
 }
 .article a {
