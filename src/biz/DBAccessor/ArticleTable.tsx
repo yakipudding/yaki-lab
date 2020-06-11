@@ -56,7 +56,7 @@ export const getArticle = async (articleId: string) => {
 // 新規記事投稿
 export const insertArticle = async (article: ArticleInterface) => {
   // Articles
-  const articleRef = await articlesTable.add({
+  await articlesTable.add({
     Category: article.category,
     Title: article.title,
     Tags: article.tags,
