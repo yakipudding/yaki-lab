@@ -9,7 +9,7 @@ const ProfileStyle = makeStyles(theme => ({
   },
   profileText: {
     whiteSpace: 'pre-wrap',
-    fontSize: '0.8em',
+    fontSize: 12.8,
   },
 }));
 

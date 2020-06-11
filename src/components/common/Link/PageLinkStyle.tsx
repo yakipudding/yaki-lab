@@ -12,6 +12,12 @@ const PageLinkStyle = makeStyles(theme => ({
     padding: 3,
     marginLeft: -3, 
     borderLeft: "3px solid #666",
+  },
+  toc: {
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+    },
   }
 }));
 

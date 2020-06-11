@@ -1,7 +1,10 @@
 import { makeStyles } from '@material-ui/core/styles';
 const CardStyle = makeStyles(theme => ({
   card: {
-    height: 200,
+    height: 'auto',
+    '@media (min-width:768px)': {
+      height: 200,
+    },
   },
   cardHead: {
     padding: 0
@@ -18,6 +21,12 @@ const CardStyle = makeStyles(theme => ({
   cardContent: {
     paddingTop: 5,
     height:60,
+  },
+  cardTitle: {
+    fontSize: 16,
+    [theme.breakpoints.up('sm')]: {
+      fontSize: 18,
+    },
   },
   cardBottom: {
     paddingTop: 5,

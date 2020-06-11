@@ -33,15 +33,20 @@ const Article = (props:IdPageProps) => {
   if (values) {
     // Markdown解析
     const tokens = Marked.lexer(values.content);
-    //先にtocのHTMLを作成
+    // 先にtocのHTMLを作成
     const toc_html = Toc(tokens)
     const marked_html = Marked.parser(tokens, { renderer: renderer })
 
+    // class
+    const categoryClass = values.category === 10 ? classes.categoryTech
+                        : values.category === 20 ? classes.categoryWork
+                                                 : classes.categoryLife
+
     return (
       <Grid container spacing={3}>
-        <Grid item xs={9}>
+        <Grid item xs={12} sm={9}>
           <Card>
-            <CardHeader className={classes.categoryTech} />
+            <CardHeader className={categoryClass} />
             <CardContent>
               <Grid item xs={12}>
                 <Typography className={classes.date}>
@@ -63,7 +68,7 @@ const Article = (props:IdPageProps) => {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={12} sm={3} className={classes.toc}>
           {/* Toc */}
           <div dangerouslySetInnerHTML={{ __html: toc_html }} className="toc" />
         </Grid>

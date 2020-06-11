@@ -10,8 +10,11 @@ const AboutStyle = makeStyles(theme => ({
   },
   profileText: {
     whiteSpace: 'pre-wrap',
-    fontSize: '1em',
     paddingLeft: 16,
+    fontSize: 14,
+    [theme.breakpoints.up('sm')]: {
+      fontSize: 16,
+    },
   },
   ul:{
     padding: 16,
@@ -24,15 +27,25 @@ const AboutStyle = makeStyles(theme => ({
   },
   table: {
     width: '100%',
+    fontSize: 14,
+    [theme.breakpoints.up('sm')]: {
+      fontSize: 16,
+    },
   },
   th: {
     textAlign: 'left',
-    padding: 16,
     backgroundColor: '#ccc',
+    padding: 10,
+    [theme.breakpoints.up('sm')]: {
+      padding: 16,
+    },
   },
   td: {
     textAlign: 'left',
-    padding: 16,
+    padding: 10,
+    [theme.breakpoints.up('sm')]: {
+      padding: 16,
+    },
   }
 }));
 export default AboutStyle

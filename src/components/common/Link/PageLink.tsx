@@ -27,7 +27,7 @@ const PageLink = (props: {productName: string, stemUrl: string, pages: ProductAr
                         </Link>
                   }
                 </li>
-                {page.view ? props.tocDom : null}
+                {page.view ? <div className={classes.toc}>{props.tocDom}</div> : null}
               </div>
             )
           })}

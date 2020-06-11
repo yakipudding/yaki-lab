@@ -27,7 +27,7 @@ const CardList = (props: { type: ItemType, items: Array<ArticleInterface | Produ
                       : article.category === 20 ? classes.categoryWork 
                                                 : classes.categoryLife
             link = article.url ? article.url : ("/Article/" + id)
-            target = article.url ? "_blank" : "_target"
+            target = article.url ? "_blank" : "_self"
             title = article.title
             tags = article.tags
           }
@@ -40,12 +40,12 @@ const CardList = (props: { type: ItemType, items: Array<ArticleInterface | Produ
             tags = product.tags
           }
           return (
-            <Grid item xs={12} sm={4} key={id}>
+            <Grid item xs={12} sm={6} md={4} key={id}>
               <Card className={classes.card}>
                 <CardHeader className={className} />
                 <CardActionArea type="button" href={link} target={target}>
                   <CardContent className={classes.cardContent}>
-                    <Typography variant="h3" gutterBottom>
+                    <Typography variant="h3" gutterBottom className={classes.cardTitle}>
                       {title}
                       {target === "_blank" ? <OpenInNewIcon fontSize="inherit" /> : null}
                     </Typography>

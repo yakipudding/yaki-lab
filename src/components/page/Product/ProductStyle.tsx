@@ -12,7 +12,16 @@ const ProductStyle = makeStyles(theme => ({
     marginRight: 5,
   },
   articleTitle: {
-    fontSize: '1.5rem',
+    fontSize: 16,
+    '@media (min-width:768px)': {
+      fontSize: 20.8,
+    },
   },
+  pageLinkBottom: {
+    display: 'block',
+    '@media (min-width:768px)': {
+      display: 'none',
+    },
+  }
 }));
 export default ProductStyle

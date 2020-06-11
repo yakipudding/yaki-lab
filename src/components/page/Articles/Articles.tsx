@@ -69,7 +69,7 @@ const Articles = (props: TagPageProps) => {
   if(values){    
     return (
       <Grid container spacing={3}>
-        <Grid item xs={9}>
+        <Grid item sm={9} xs={12}>
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Typography variant="h2" gutterBottom>
@@ -79,7 +79,7 @@ const Articles = (props: TagPageProps) => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item sm={3} xs={12}>
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Typography variant="h2">

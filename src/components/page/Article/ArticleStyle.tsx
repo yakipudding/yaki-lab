@@ -20,5 +20,11 @@ const ArticleStyle = makeStyles(theme => ({
     color: '#333',
     fontSize: 14,
   },
+  toc: {
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+    },
+  }
 }));
 export default ArticleStyle

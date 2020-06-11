@@ -37,39 +37,27 @@ const Theme = createMuiTheme({
 });
 // typography
 Theme.typography.h1 = {
-  fontSize: '1.2rem',
-  '@media (min-width:600px)': {
-    fontSize: '1.5rem',
-  },
+  fontSize: 24,
   [Theme.breakpoints.up('md')]: {
-    fontSize: '2.0rem',
+    fontSize: 32,
   },
 };
 Theme.typography.h2 = {
-  fontSize: '1.0rem',
-  '@media (min-width:600px)': {
-    fontSize: '0.8rem',
-  },
+  fontSize: 19.2,
   [Theme.breakpoints.up('md')]: {
-    fontSize: '1.8rem',
+    fontSize: 28.8,
   },
 };
 Theme.typography.h3 = {
-  fontSize: '0.8rem',
-  '@media (min-width:600px)': {
-    fontSize: '0.5rem',
-  },
+  fontSize: 16,
   [Theme.breakpoints.up('md')]: {
-    fontSize: '1.0rem',
+    fontSize: 20.8,
   },
 };
 Theme.typography.body2 = {
-  fontSize: '0.5rem',
-  '@media (min-width:600px)': {
-    fontSize: '0.3rem',
-  },
+  fontSize: 11,
   [Theme.breakpoints.up('md')]: {
-    fontSize: '0.8rem',
+    fontSize: 12.8,
   },
 };
 export default Theme
