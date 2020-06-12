@@ -4,7 +4,7 @@ const ArticleStyle = makeStyles(theme => ({
     backgroundColor: "#e3f2fd"
   },
   categoryWork: {
-    backgroundColor: "#fff3e0"
+    backgroundColor: "#dcedc8"
   },
   categoryLife: {
     backgroundColor: "#fffde7"

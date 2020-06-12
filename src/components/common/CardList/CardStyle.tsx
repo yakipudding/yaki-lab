@@ -13,7 +13,7 @@ const CardStyle = makeStyles(theme => ({
     backgroundColor: "#e3f2fd"
   },
   categoryWork: {
-    backgroundColor: "#fff3e0"
+    backgroundColor: "#dcedc8"
   },
   categoryLife: {
     backgroundColor: "#ffecb3"
@@ -23,10 +23,7 @@ const CardStyle = makeStyles(theme => ({
     height:60,
   },
   cardTitle: {
-    fontSize: 16,
-    [theme.breakpoints.up('sm')]: {
-      fontSize: 18,
-    },
+    fontSize: 18,
   },
   cardBottom: {
     paddingTop: 5,
