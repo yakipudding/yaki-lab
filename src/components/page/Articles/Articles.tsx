@@ -73,7 +73,7 @@ const Articles = (props: TagPageProps) => {
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Typography variant="h2" gutterBottom>
-                ARTICLES
+                記事一覧
               </Typography>
                 <CardList type={ItemType.Article} items={values.articles} tagFilter={tagFilter} />
             </Grid>

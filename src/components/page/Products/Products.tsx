@@ -71,7 +71,7 @@ const Products = (props: TagPageProps) => {
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Typography variant="h2" gutterBottom>
-                PRODUCTS
+                製作物一覧
               </Typography>
               <CardList type={ItemType.Product} items={values.products} tagFilter={tagFilter} />
             </Grid>
