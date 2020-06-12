@@ -10,8 +10,8 @@ const Profile = () => {
 
   return (
     <div>
-      <Typography variant="h2" gutterBottom>
-        PROFILE
+      <Typography variant="h2">
+        プロフィール
       </Typography>
       <Card className={classes.iconCard}>
         <CardMedia
