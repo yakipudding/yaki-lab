@@ -43,16 +43,13 @@ Theme.typography.h1 = {
   },
 };
 Theme.typography.h2 = {
-  fontSize: 20.8,
+  fontSize: 22,
   [Theme.breakpoints.up('md')]: {
     fontSize: 24,
   },
 };
 Theme.typography.h3 = {
-  fontSize: 18,
-  [Theme.breakpoints.up('md')]: {
-    fontSize: 20.8,
-  },
+  fontSize: 20.8,
 };
 Theme.typography.body2 = {
   fontSize: 12.8,

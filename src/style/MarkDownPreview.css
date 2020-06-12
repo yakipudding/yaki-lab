@@ -7,7 +7,7 @@
   margin-top: 25px;
   margin-bottom: 3px;
   border-bottom: 1px solid rgba(199, 145, 0, 0.3);
-  font-size: 20.8px;
+  font-size: 20px;
 }
 .article h4 {
   margin-top: 10px;
@@ -41,6 +41,8 @@ pre {
   max-width: 80%;
   background-color: #ddd;
   white-space: pre-wrap;
+  font-size: 14px;
+  line-height: 22px;
 }
 
 code {

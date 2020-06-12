@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Marked from 'marked'
-import '../../../style/MarkDownPreview.css';
+import '../../../style/ProductMarkDownPreview.css';
 import { Button, Grid, TextField } from '@material-ui/core/'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import { registerImage } from '../../../biz/StorageAccessor'
