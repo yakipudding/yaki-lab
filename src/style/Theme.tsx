@@ -55,9 +55,6 @@ Theme.typography.h3 = {
   },
 };
 Theme.typography.body2 = {
-  fontSize: 11,
-  [Theme.breakpoints.up('md')]: {
-    fontSize: 12.8,
-  },
+  fontSize: 12.8,
 };
 export default Theme
