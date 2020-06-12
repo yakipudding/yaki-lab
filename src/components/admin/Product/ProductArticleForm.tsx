@@ -4,7 +4,7 @@ import '../../../style/MarkDownPreview.css';
 import { Button, Grid, TextField } from '@material-ui/core/'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import { registerImage } from '../../../biz/StorageAccessor'
-import renderer from '../../../biz/Renderer/MarkdownRenderer'
+import { rendererProject } from '../../../biz/Renderer/MarkdownRenderer'
 import ArticleFormStyle from './ProductArticleFormStyle'
 import { ProductArticleInterface } from '../../../biz/Definition/Interfaces'
 import { InputChangeEvent } from '../../../biz/Definition/Types'
@@ -17,7 +17,7 @@ function ProductArticleForm(props: {initArticle: ProductArticleInterface, submit
   
   // Markdown解析
   const tokens = Marked.lexer(values.content);
-  const marked_html = Marked.parser(tokens, { renderer: renderer })
+  const marked_html = Marked.parser(tokens, { renderer: rendererProject })
 
   // action
   const handleChange = (name: string) => (event: InputChangeEvent) => {
