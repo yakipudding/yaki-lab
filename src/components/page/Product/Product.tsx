@@ -10,7 +10,7 @@ import PageLink from '../../common/Link/PageLink'
 import TagLink from '../../common/Link/TagLink'
 import Toc from '../../../biz/Renderer/Toc'
 import ProductStyle from './ProductStyle'
-import '../../../style/MarkDownPreview.css';
+import '../../../style/ProductMarkDownPreview.css';
 
 // プロダクトページ
 const Product = (props: ProductPageProps) => {
