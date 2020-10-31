@@ -1,6 +1,6 @@
 .article {
   font-size: 16px;
-  line-height: 30.4px;
+  line-height: 26px;
 }
 
 .article h3 {
@@ -10,14 +10,14 @@
   font-size: 20px;
 }
 .article h4 {
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 3px;
   font-size: 19.2px;
 }
 .article h5 {
-  margin-top: 5px;
+  margin-top: 15px;
   margin-bottom: 3px;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .article a {
@@ -31,7 +31,7 @@ ul {
 }
 p {
   white-space:pre-wrap;
-  margin: 5px 0px;
+  margin: 10px 0px;
 }
 img {
   max-width: 100%;
@@ -49,6 +49,21 @@ code {
   background-color: #ddd;
   color: #666;
   padding: 2px;
+}
+
+
+/* table */
+table {
+  border-spacing: 0px;
+}
+thead {
+  background-color: #ccc;
+}
+tbody {
+  background-color: #eee;
+}
+th, td {
+  padding: 5px;
 }
 
 /* toc */
