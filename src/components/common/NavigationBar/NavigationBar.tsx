@@ -12,6 +12,7 @@ const NavigationBar = (props: PageProps) => {
   let tabIndex = 0
   if(admin){
     tabIndex = path === "/AdminDashboard" || path === "/AdminNewArticle" ? 0
+              : path === "/AdminEditAbout" ? 2
               : 1
   } 
   else{

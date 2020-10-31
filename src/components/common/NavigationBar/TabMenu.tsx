@@ -17,6 +17,7 @@ const TabMenu = (props: TabMenuProps) => {
       <Tabs value={props.index} centered>
         <Tab label="ARTICLES" {...a11yProps(0)} href="/AdminDashboard" />
         <Tab label="PRODUCTS" {...a11yProps(1)} href="/AdminProductDashboard" />
+        <Tab label="ABOUT" {...a11yProps(2)} href="/AdminEditAbout" />
       </Tabs>
     );
   }

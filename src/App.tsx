@@ -20,6 +20,7 @@ import AdminProductArticles from './components/admin/Product/AdminProductArticle
 import AdminNewProduct from './components/admin/Product/AdminNewProduct'
 import AdminNewProductArticle from './components/admin/Product/AdminNewProductArticle'
 import AdminEditProductArticle from './components/admin/Product/AdminEditProductArticle'
+import AdminEditAbout from './components/admin/About/AdminEditAbout'
 
 const App = () => {
   const classes = AppStyle();
@@ -48,6 +49,7 @@ const App = () => {
               <Route exact path='/AdminNewProduct' component={CheckAdmin(AdminNewProduct)} />
               <Route exact path='/AdminNewProductArticle/:id' component={CheckAdmin(AdminNewProductArticle)} />
               <Route exact path='/AdminEditProductArticle/:productId/:articleId' component={CheckAdmin(AdminEditProductArticle)} />
+              <Route exact path='/AdminEditAbout/' component={CheckAdmin(AdminEditAbout)} />
               <Route component={NotFound} />
             </Switch>
           </Container>

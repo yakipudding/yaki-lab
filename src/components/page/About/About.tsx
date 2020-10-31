@@ -1,89 +1,53 @@
-import React from 'react';
-import { Card, CardMedia, Container, Grid, Link, Typography, IconButton } from '@material-ui/core';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import TwitterIcon from '@material-ui/icons/Twitter';
+import React, { useState, useEffect } from 'react';
+import Marked from 'marked'
+import { Card, CardHeader, CardContent, Grid, Typography } from '@material-ui/core/';
+import renderer from '../../../biz/Renderer/MarkdownRenderer'
+import { getAbout } from '../../../biz/DBAccessor/AboutTable'
 import AboutStyle from './AboutStyle'
+import '../../../style/MarkDownPreview.css';
 
-// 作者ページ
+// ABOUTページ
 const About = () => {
   const classes = AboutStyle();
+  const [values, setValues] = useState<null | string>(null);
+
+  // 初期処理：記事取得
+  useEffect(() => {
+    // firebaseから取得
+    getAbout().then((about) => {
+      setValues(about)
+    })
+  }, []);
+
+  if (values) {
+    // Markdown解析
+    const tokens = Marked.lexer(values);
+    const marked_html = Marked.parser(tokens, { renderer: renderer })
 
     return (
-    <Container maxWidth="sm">
-      <Grid container spacing={1}>
+      <Grid container spacing={3}>
         <Grid item xs={12}>
-          <Typography variant="h2">
-            焼きぷでぃんぐ
-          </Typography>
-          <Card className={classes.iconCard}>
-            <CardMedia
-              className={classes.icon}
-              image="/profile_icon.png"
-              title="icon"
-            />
+          <Card>
+            <CardHeader />
+            <CardContent>
+              <Grid item xs={12}>
+                <Typography variant="h2" className={classes.title}>
+                  このサイトについて
+                </Typography>
+              </Grid>
+              <Grid item xs={12}>
+                {/* Markdown */}
+                <div dangerouslySetInnerHTML={{ __html: marked_html }} className="article" />
+              </Grid>
+            </CardContent>
           </Card>
-          <Typography variant="body1" className={classes.profileText}>
-            機械学習やWEB開発系のエンジニア<br />
-            連絡等はTwitterまで。
-          </Typography>
-          <ul className={classes.ul}>
-            <li className={classes.li}>
-              <IconButton aria-label="twitter" size="small" href="https://twitter.com/yakipudding" target="_blank">
-                <TwitterIcon fontSize="inherit" />
-              </IconButton>
-            </li>
-            <li className={classes.li}>
-              <IconButton aria-label="repository" size="small" href="https://github.com/yakipudding/" target="_blank">
-                <GitHubIcon fontSize="inherit" />
-              </IconButton>
-            </li>
-            <li className={classes.li}>
-              <Link href="https://qiita.com/yakipudding" color="textSecondary" target="_blank">
-                Qiita
-              </Link>
-            </li>
-            <li className={classes.li}>
-              <Link href="https://yakipudding.qrunch.io/" color="textSecondary" target="_blank">
-                Qrunch
-              </Link>
-            </li>
-            <li className={classes.li}>
-              <Link href="http://yakipudding.hatenablog.com/" color="textSecondary" target="_blank">
-                はてなブログ
-              </Link>
-            </li>
-          </ul>
         </Grid>
-        <Grid item xs={12}>
-          <table className={classes.table}>
-            <tbody>
-              <tr>
-                <th className={classes.th}>Windows Application</th>
-                <td className={classes.td}>C# WindowsForm WPF</td>
-              </tr>
-              <tr>
-                <th className={classes.th}>Web Application</th>
-                <td className={classes.td}>C# ASP.NET MVC<br/>React.js</td>
-              </tr>
-              <tr>
-                <th className={classes.th}>Database</th>
-                <td className={classes.td}>SQL Server</td>
-              </tr>
-              <tr>
-                <th className={classes.th}>Machine Learning</th>
-                <td className={classes.td}>NLP(自然言語処理) fastText</td>
-              </tr>
-              <tr>
-                <th className={classes.th}>Analytics</th>
-                <td className={classes.td}>Python R</td>
-              </tr>
-            </tbody>
-          </table>
-        </Grid>
-
       </Grid>
-    </Container>
-  );
+    );
+  }
+  else {
+    return null
+  }
 }
 
 export default About;
