@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid'
 import CardList from '../../common/CardList/CardList'
 import { ArticleInterface } from '../../../biz/Definition/Interfaces'
 import { TagPageProps } from '../../../biz/Definition/Types'
 import { ItemType } from '../../../biz/Definition/Enums'
-import Profile from './Profile'
 import TagLink from '../../common/Link/TagLink'
 import { getArticles } from '../../../biz/DBAccessor/ArticleTable'
 import Loading from '../../common/FeedBack/Loading'
@@ -72,23 +70,14 @@ const Articles = (props: TagPageProps) => {
         <Grid item sm={9} xs={12}>
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <Typography variant="h2" gutterBottom>
-                記事一覧
-              </Typography>
-                <CardList type={ItemType.Article} items={values.articles} tagFilter={tagFilter} />
+              <CardList type={ItemType.Article} items={values.articles} tagFilter={tagFilter} />
             </Grid>
           </Grid>
         </Grid>
         <Grid item sm={3} xs={12}>
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <Typography variant="h2">
-                タグ一覧
-              </Typography>
               <TagLink tags={values.tags} tagFilter={tagFilter} filter={values.filter} />
-            </Grid>
-            <Grid item xs={12}>
-              <Profile />
             </Grid>
           </Grid>
         </Grid>

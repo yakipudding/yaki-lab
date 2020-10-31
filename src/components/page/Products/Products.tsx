@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import CardList from '../../common/CardList/CardList'
 import { ProductInterface } from '../../../biz/Definition/Interfaces'
 import { TagPageProps } from '../../../biz/Definition/Types'
@@ -70,9 +69,6 @@ const Products = (props: TagPageProps) => {
         <Grid item xs={12} sm={9}>
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <Typography variant="h2" gutterBottom>
-                製作物一覧
-              </Typography>
               <CardList type={ItemType.Product} items={values.products} tagFilter={tagFilter} />
             </Grid>
           </Grid>
@@ -80,9 +76,6 @@ const Products = (props: TagPageProps) => {
         <Grid item xs={3}>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={9}>
-              <Typography variant="h2">
-                タグ一覧
-              </Typography>
               <TagLink tags={values.tags} tagFilter={tagFilter} filter={values.filter} />
             </Grid>
           </Grid>
