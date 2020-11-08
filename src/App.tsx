@@ -27,10 +27,10 @@ const App = () => {
   const theme = Theme;
   return (
     <BrowserRouter>
-      <div className={classes.app}>
+      <div>
         <ThemeProvider theme={theme}>
           <Route component={NavigationBar} />
-          <Container className={classes.container}>
+          <Container maxWidth="lg" className={classes.container}>
             <Switch>
               <Route exact path='/' component={Articles} />
               <Route exact path='/Articles' component={Articles} />

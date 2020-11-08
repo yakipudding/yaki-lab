@@ -12,6 +12,7 @@ const ArticleStyle = makeStyles(theme => ({
   date: {
     color: '#aaa',
     fontSize: 14,
+    marginBottom: '1em',
   },
   title: {
     margin: 0,
@@ -25,6 +26,14 @@ const ArticleStyle = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
+  },
+  tocCardContent: {
+    padding: 0,
+  },
+  tocCard: {
+    backgroundColor: '#eeeeee',
+    position: 'sticky',
+    top: 40,
   }
 }));
 export default ArticleStyle

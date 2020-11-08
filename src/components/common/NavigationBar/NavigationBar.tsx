@@ -23,17 +23,15 @@ const NavigationBar = (props: PageProps) => {
   }
 
   return (
-    <AppBar position="static" color="primary">
+    <AppBar position="static" color="primary" elevation={0} className={classes.appBar}>
       <Container>
-        <Toolbar className={classes.title}>
-          <Typography variant="h1">
+        <Toolbar className={classes.toolbar}>
+          <Typography variant="h1" align="center" className={classes.title}>
             <Link href="/" color="inherit">
               焼きらぼ。
             </Link>
           </Typography>
-          <Typography variant="subtitle1" component="span">
-            {admin ? "管理者モード" : "雑なポートフォリオサイト"}
-          </Typography>
+          {admin ? "管理者モード" : ""}
         </Toolbar>
         <TabMenu index={tabIndex} admin={admin} />
       </Container>

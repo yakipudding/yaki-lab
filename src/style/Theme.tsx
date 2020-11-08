@@ -16,9 +16,9 @@ const Theme = createMuiTheme({
       "contrastText": "#000" 
     },
     "secondary": { 
-      "light": "#ffa270",
-      "main": "#ff7043",
-      "dark": "#c63f17",
+      "light": "#c17d68",
+      "main": "#8e503d",
+      "dark": "#5d2616",
       "contrastText": "#fff" 
     },
     "error": {
@@ -50,6 +50,10 @@ Theme.typography.h2 = {
 };
 Theme.typography.h3 = {
   fontSize: 20.8,
+};
+Theme.typography.h5 = {
+  fontSize: 14,
+  color: "#9e9e9e",
 };
 Theme.typography.body2 = {
   fontSize: 12.8,

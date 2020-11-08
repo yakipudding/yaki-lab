@@ -14,6 +14,7 @@ const CardList = (props: { type: ItemType, items: Array<ArticleInterface | Produ
       { props.items.map((item) => {
           let id: string
           let className:any = null
+          let cardHeaderTitle:string = ""
           let link: string
           let target = "_self"
           let title: string
@@ -26,6 +27,9 @@ const CardList = (props: { type: ItemType, items: Array<ArticleInterface | Produ
             className = article.category === 10 ? classes.categoryTech 
                       : article.category === 20 ? classes.categoryWork 
                                                 : classes.categoryLife
+            cardHeaderTitle = article.category === 10 ? "TECH"
+                            : article.category === 20 ? "WORK"
+                                                      : "LIFE"
             link = article.url ? article.url : ("/Article/" + id)
             target = article.url ? "_blank" : "_self"
             title = article.title
@@ -33,6 +37,8 @@ const CardList = (props: { type: ItemType, items: Array<ArticleInterface | Produ
           }
           else{
             const product = item as ProductInterface
+            className = classes.categoryTech
+            cardHeaderTitle = "TECH"
             id = product.productId
             link = "/Product/" + id + "/Top"
             title = product.name
@@ -42,7 +48,10 @@ const CardList = (props: { type: ItemType, items: Array<ArticleInterface | Produ
           return (
             <Grid item xs={12} sm={6} md={4} key={id}>
               <Card className={classes.card}>
-                <CardHeader className={className} />
+                <CardHeader 
+                  className={className}
+                  title={cardHeaderTitle}
+                   />
                 <CardActionArea type="button" href={link} target={target}>
                   <CardContent className={classes.cardContent}>
                     <Typography variant="h3" gutterBottom className={classes.cardTitle}>

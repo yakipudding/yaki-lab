@@ -16,6 +16,7 @@ const Article = (props:IdPageProps) => {
   const articleId = props.match.params.id
   const [values, setValues] = useState<null | ArticleInterface>(null);
 
+
   // 初期処理：記事取得
   useEffect(() => {
     if (articleId) {
@@ -37,40 +38,27 @@ const Article = (props:IdPageProps) => {
     const toc_html = Toc(tokens)
     const marked_html = Marked.parser(tokens, { renderer: renderer })
 
-    // class
-    const categoryClass = values.category === 10 ? classes.categoryTech
-                        : values.category === 20 ? classes.categoryWork
-                                                 : classes.categoryLife
-
     return (
       <Grid container spacing={3}>
         <Grid item xs={12} sm={9}>
-          <Card>
-            <CardHeader className={categoryClass} />
-            <CardContent>
-              <Grid item xs={12}>
-                <Typography className={classes.date}>
-                  {values.date}
-                </Typography>
-              </Grid>
-              <Grid item xs={12}>
-                <Typography variant="h2" className={classes.title}>
-                  {values.title}
-                </Typography>
-              </Grid>
-              <Grid item xs={12}>
-                {values.tags ? <TagLink tags={values.tags.split(' ')} tagFilter={tagFilter} /> : null}
-              </Grid>
-              <Grid item xs={12}>
-                {/* Markdown */}
-                <div dangerouslySetInnerHTML={{ __html: marked_html }} className="article" />
-              </Grid>
-            </CardContent>
-          </Card>
+          <Typography variant="h2" className={classes.title}>
+            {values.title}
+          </Typography>
+          {values.tags ? <TagLink tags={values.tags.split(' ')} tagFilter={tagFilter} /> : null}
+          <Typography className={classes.date}>
+            {values.date}
+          </Typography>
+          {/* Markdown */}
+          <div dangerouslySetInnerHTML={{ __html: marked_html }} className="article" />
         </Grid>
         <Grid item xs={12} sm={3} className={classes.toc}>
-          {/* Toc */}
-          <div dangerouslySetInnerHTML={{ __html: toc_html }} className="toc" />
+          <Card className={classes.tocCard}>  
+            <CardHeader title="目次" />
+            <CardContent className={classes.tocCardContent}>
+              {/* Toc */}
+              <div dangerouslySetInnerHTML={{ __html: toc_html }} className="toc" />
+            </CardContent>
+          </Card>
         </Grid>
       </Grid>
     );

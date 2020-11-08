@@ -3,24 +3,24 @@ const CardStyle = makeStyles(theme => ({
   card: {
     height: 'auto',
     '@media (min-width:768px)': {
-      height: 200,
+      height: 225,
     },
   },
   cardHead: {
     padding: 0
   },
   categoryTech: {
-    backgroundColor: "#e3f2fd"
+    backgroundColor: "#e8eaf6",
   },
   categoryWork: {
-    backgroundColor: "#dcedc8"
+    backgroundColor: "#e0f2f1"
   },
   categoryLife: {
-    backgroundColor: "#ffecb3"
+    backgroundColor: "#fff3e0"
   },
   cardContent: {
     paddingTop: 5,
-    height:60,
+    height:65,
   },
   cardTitle: {
     fontSize: 18,
