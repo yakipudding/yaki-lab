@@ -12,6 +12,7 @@ const NavigationStyle = makeStyles(theme => ({
   },
   title: {
     flex: 1,
+    fontSize: '1.5rem',
   },
   section: {
     display: 'flex',

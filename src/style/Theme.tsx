@@ -37,25 +37,38 @@ const Theme = createMuiTheme({
 });
 // typography
 Theme.typography.h1 = {
-  fontSize: 24,
-  [Theme.breakpoints.up('md')]: {
-    fontSize: 32,
-  },
+  fontSize: '1.8rem',
 };
 Theme.typography.h2 = {
-  fontSize: 22,
-  [Theme.breakpoints.up('md')]: {
-    fontSize: 24,
-  },
+  fontSize: '1.5rem',
 };
+// Card Title
 Theme.typography.h3 = {
-  fontSize: 20.8,
+  fontSize: '1.25rem',
 };
+Theme.typography.h4 = {
+  fontSize: '1.1rem',
+};
+// Card Head (Category)
 Theme.typography.h5 = {
-  fontSize: 14,
+  fontSize: '0.8rem',
   color: "#9e9e9e",
 };
+// Product Name
+Theme.typography.subtitle1 = {
+  fontSize: '1.9rem',
+};
+// Product Desctiption
+Theme.typography.subtitle2 = {
+  fontSize: '1.1rem',
+  color: "#9e9e9e",
+};
+// PageLink
+Theme.typography.body1 = {
+  fontSize: '1rem',
+};
+// Card Description
 Theme.typography.body2 = {
-  fontSize: 12.8,
+  fontSize: '0.8rem',
 };
 export default Theme

@@ -54,7 +54,7 @@ const CardList = (props: { type: ItemType, items: Array<ArticleInterface | Produ
                    />
                 <CardActionArea type="button" href={link} target={target}>
                   <CardContent className={classes.cardContent}>
-                    <Typography variant="h3" gutterBottom className={classes.cardTitle}>
+                    <Typography variant="h3" className={classes.cardTitle}>
                       {title}
                       {target === "_blank" ? <OpenInNewIcon fontSize="inherit" /> : null}
                     </Typography>

@@ -1,21 +1,48 @@
 import React, { useState, useEffect } from 'react';
-import Marked from 'marked'
-import { Card, CardHeader, CardContent, Grid, Typography } from '@material-ui/core/';
-import renderer from '../../../biz/Renderer/MarkdownRenderer'
+import { Grid, Typography } from '@material-ui/core/';
 import { getArticle } from '../../../biz/DBAccessor/ArticleTable'
 import { ArticleInterface } from '../../../biz/Definition/Interfaces'
 import { IdPageProps } from '../../../biz/Definition/Types'
-import Toc from '../../../biz/Renderer/Toc'
 import TagLink from '../../common/Link/TagLink'
-import ArticleStyle from './ArticleStyle'
-import '../../../style/MarkDownPreview.css';
+import Toc from '../../common/Link/Toc'
+import Markdown from '../../common/Markdown/Markdown'
+import { makeStyles } from '@material-ui/core/styles';
 
 // 記事ページ
+const ArticleStyle = makeStyles(theme => ({
+  categoryTech: {
+    backgroundColor: "#e3f2fd"
+  },
+  categoryWork: {
+    backgroundColor: "#dcedc8"
+  },
+  categoryLife: {
+    backgroundColor: "#fffde7"
+  },
+  date: {
+    color: '#aaa',
+    fontSize: 14,
+    marginBottom: '1em',
+  },
+  title: {
+    margin: 0,
+  },
+  category: {
+    color: '#333',
+    fontSize: 14,
+  },
+  toc: {
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+    },
+  },
+}));
+
 const Article = (props:IdPageProps) => {
   const classes = ArticleStyle();
   const articleId = props.match.params.id
   const [values, setValues] = useState<null | ArticleInterface>(null);
-
 
   // 初期処理：記事取得
   useEffect(() => {
@@ -32,33 +59,20 @@ const Article = (props:IdPageProps) => {
   }
 
   if (values) {
-    // Markdown解析
-    const tokens = Marked.lexer(values.content);
-    // 先にtocのHTMLを作成
-    const toc_html = Toc(tokens)
-    const marked_html = Marked.parser(tokens, { renderer: renderer })
-
     return (
       <Grid container spacing={3}>
         <Grid item xs={12} sm={9}>
-          <Typography variant="h2" className={classes.title}>
+          <Typography variant="h1" component="h1" className={classes.title}>
             {values.title}
           </Typography>
           {values.tags ? <TagLink tags={values.tags.split(' ')} tagFilter={tagFilter} /> : null}
           <Typography className={classes.date}>
             {values.date}
           </Typography>
-          {/* Markdown */}
-          <div dangerouslySetInnerHTML={{ __html: marked_html }} className="article" />
+          <Markdown mdText={values.content} />
         </Grid>
         <Grid item xs={12} sm={3} className={classes.toc}>
-          <Card className={classes.tocCard}>  
-            <CardHeader title="目次" />
-            <CardContent className={classes.tocCardContent}>
-              {/* Toc */}
-              <div dangerouslySetInnerHTML={{ __html: toc_html }} className="toc" />
-            </CardContent>
-          </Card>
+          <Toc mdText={values.content} />
         </Grid>
       </Grid>
     );

@@ -1,22 +1,16 @@
 import React, { useState } from 'react';
-import Marked from 'marked'
-import '../../../style/MarkDownPreview.css';
 import { Button, Grid, TextField} from '@material-ui/core/'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import { registerImage } from '../../../biz/StorageAccessor'
-import renderer from '../../../biz/Renderer/MarkdownRenderer'
 import ArticleFormStyle from './AboutFormStyle'
 import { InputChangeEvent } from '../../../biz/Definition/Types'
+import Markdown from '../../common/Markdown/Markdown';
 
 function AboutForm(props: {initContent : string, submit: (content: string) => void }) {
   const classes = ArticleFormStyle();
   
   // state init
   const [values, setValues] = useState(props.initContent);
-  
-  // Markdown解析
-  const tokens = Marked.lexer(values);
-  const marked_html = Marked.parser(tokens, { renderer: renderer })
 
   // action
   const handleChange = (event: InputChangeEvent) => {
@@ -86,8 +80,7 @@ function AboutForm(props: {initContent : string, submit: (content: string) => vo
               />
             </Grid>
             <Grid item xs={6} className={classes.previewField}>
-              {/* Markdown */}
-              <div dangerouslySetInnerHTML={{ __html: marked_html }} className="Note" />
+              <Markdown mdText={values} />
             </Grid>
           </Grid>
         </Grid>
