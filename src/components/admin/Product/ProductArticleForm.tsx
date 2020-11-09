@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { Button, Grid, TextField } from '@material-ui/core/'
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import { Grid, TextField } from '@material-ui/core/'
 import { registerImage } from '../../../biz/StorageAccessor'
-import ArticleFormStyle from './ProductArticleFormStyle'
 import { ProductArticleInterface } from '../../../biz/Definition/Interfaces'
 import { InputChangeEvent } from '../../../biz/Definition/Types'
-import Markdown from '../../common/Markdown/Markdown';
+import ImageUploadButton from '../Form/ImageUpload';
+import ContentTextField from '../Form/ContentTextField';
+import CustomTextField from '../Form/CustomTextField';
+import SubmitButton from '../Form/SubmitButton';
+import MarkdownPreviewField from '../Form/MarkdownPreviewField';
 
-function ProductArticleForm(props: {initArticle: ProductArticleInterface, submit: (article: ProductArticleInterface) => void }) {
-  const classes = ArticleFormStyle();
-  
+// プロダクト記事
+function ProductArticleForm(props: {initArticle: ProductArticleInterface, submit: (article: ProductArticleInterface) => void }) { 
   // state init
   const [values, setValues] = useState({ ...props.initArticle });
 
@@ -39,7 +40,7 @@ function ProductArticleForm(props: {initArticle: ProductArticleInterface, submit
   };
 
   return (
-    <form onSubmit={handleSubmit} className={classes.form}>
+    <form onSubmit={handleSubmit}>
       <Grid container>
         <Grid item xs={12}>
           <TextField
@@ -66,74 +67,28 @@ function ProductArticleForm(props: {initArticle: ProductArticleInterface, submit
           />
         </Grid>
         <Grid item xs={12}>
-          <TextField
-            label="タイトル"
-            id="articleTitle"
-            margin="dense"
-            variant="outlined"
-            fullWidth
-            onChange={handleChange('articleTitle')}
+          <CustomTextField
+            fieldName="articleTitle"
+            labelName="タイトル"
             value={values.articleTitle}
-            InputLabelProps={{ shrink: true }}
+            handleChange={handleChange}
           />
         </Grid>
-        <Grid item xs={12} className={classes.imageButtonField}>
-          <input
-            className={classes.imageButtonHidden}
-            id="contained-button-file"
-            multiple
-            type="file"
-            accept="image/png, image/jpeg, image/jpg, image/gif"
-            onChange={handleChangeImage}
-          />
-          <label htmlFor="contained-button-file">
-            <Button 
-              size="small"
-              variant="contained" 
-              component="span" 
-              color="primary"
-              startIcon={<CloudUploadIcon />}>
-              画像アップロード
-            </Button>
-          </label>
+        <Grid item xs={12}>
+          <ImageUploadButton handleChangeImage={handleChangeImage} />
         </Grid>
         <Grid item xs={12}>
           <Grid container spacing={3}>
             <Grid item xs={6}>
-              <TextField
-                label="コンテンツ"
-                id="content"
-                multiline
-                rows={28}
-                className={classes.contentField}
-                margin="dense"
-                variant="outlined"
-                onChange={handleChange('content')}
-                value={values.content}
-                InputProps={{
-                  classes: {
-                    root: classes.contentField,
-                    input: classes.contentField,
-                  },
-                }}
-                InputLabelProps={{ shrink: true }}
-              />
+              <ContentTextField content={values.content} handleChange={handleChange('content')} />
             </Grid>
-            <Grid item xs={6} className={classes.previewField}>            
-              <Markdown mdText={values.content} />
+            <Grid item xs={6}>
+              <MarkdownPreviewField content={values.content} />
             </Grid>
           </Grid>
         </Grid>
         <Grid item xs={12}>
-          <Button
-            variant="contained"
-            color="primary"
-            className={classes.submitbutton}
-            onClick={handleSubmit}
-            type="button"
-          >
-            投稿
-          </Button>
+          <SubmitButton handleSubmit={handleSubmit} />
         </Grid>
       </Grid>
     </form>
