@@ -8,9 +8,40 @@ import PageLink from '../../common/Link/PageLink'
 import TagLink from '../../common/Link/TagLink'
 import Toc from '../../common/Link/Toc'
 import Markdown from '../../common/Markdown/Markdown'
-import ProductStyle from './ProductStyle'
+import { makeStyles } from '@material-ui/core/styles';
 
 // プロダクトページ
+const ProductStyle = makeStyles(theme => ({
+  productName: {
+    fontSize: '2rem',
+    marginBottom: 0,
+  },
+  productHeader: {
+    marginBottom: '1em',
+  },
+  date: {
+    color: '#757575',
+    fontSize: 12,
+  },
+  description: {
+    color: "#616161",
+    marginRight: 5,
+  },
+  articleTitle: {
+    fontSize: '1.9rem',
+  },
+  toc: {
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+    },
+  },
+  tocSticky: {
+    position: 'sticky',
+    top: 40,
+  },
+}));
+
 const Product = (props: ProductPageProps) => {
   const classes = ProductStyle();
   const productId = props.match.params.productId

@@ -1,10 +1,30 @@
 import React from 'react';
 import { AppBar, Container, Link, Toolbar, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import TabMenu from './TabMenu'
-import NavigationStyle from './NavigationStyle'
 import { PageProps } from '../../../biz/Definition/Types'
 
 // ナビゲーションバー
+const NavigationStyle = makeStyles(theme => ({
+  appBar: {
+    borderBottom: `1px solid #ddd`,
+  },
+  toolbar: {
+    marginTop: 10,
+    padding: 0,
+    display: 'flex',
+    alignItems: 'baseline',
+    minHeight: 30,
+  },
+  title: {
+    flex: 1,
+    fontSize: '1.5rem',
+  },
+  section: {
+    display: 'flex',
+  },
+}));
+
 const NavigationBar = (props: PageProps) => {
   const classes = NavigationStyle();
   const path = props.location.pathname

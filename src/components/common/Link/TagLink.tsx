@@ -1,8 +1,29 @@
 import React from 'react'
 import { Chip } from '@material-ui/core';
-import TagLinkStyle from './TagLinkStyle'
+import { makeStyles } from '@material-ui/core/styles';
 
 // タグリンク
+const TagLinkStyle = makeStyles(theme => ({
+  link: {
+    fontSize: 14,
+  },
+  ul:{
+    paddingLeft: 0,
+    listStyleType: 'none',
+    display: 'inline',
+  },
+  li: {
+    display: 'inline',
+    marginRight: 5,
+  },
+  chips: {
+    display: 'inline-block'
+  },
+  chip: {
+    margin: theme.spacing(0.5),
+  },
+}));
+
 const TagLink = (props: {tags: string[], tagFilter: (tag:string) => void, filter?: string | null }) => {
   const classes = TagLinkStyle();
   return (

@@ -62,7 +62,7 @@ const Article = (props:IdPageProps) => {
     return (
       <Grid container spacing={3}>
         <Grid item xs={12} sm={9}>
-          <Typography variant="h1" component="h1" className={classes.title}>
+          <Typography variant="h1" className={classes.title}>
             {values.title}
           </Typography>
           {values.tags ? <TagLink tags={values.tags.split(' ')} tagFilter={tagFilter} /> : null}

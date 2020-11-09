@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Typography } from '@material-ui/core/';
 import { getAbout } from '../../../biz/DBAccessor/AboutTable'
-import AboutStyle from './AboutStyle'
 import Markdown from '../../common/Markdown/Markdown';
+import { makeStyles } from '@material-ui/core/styles';
 
 // ABOUTページ
+const AboutStyle = makeStyles(theme => ({
+  title: {
+    margin: 0,
+  },
+}));
+
 const About = () => {
   const classes = AboutStyle();
   const [values, setValues] = useState<null | string>(null);
