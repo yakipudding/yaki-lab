@@ -2,6 +2,13 @@ import React, { ElementType } from 'react';
 import ReactMarkdown from 'markdown-to-jsx';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { Link, Typography } from '@material-ui/core';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import { Variant } from '@material-ui/core/styles/createTypography';
 import '../../../style/MarkDownPreview.css';
@@ -53,6 +60,17 @@ const A = ({ children, href } : Props) => {
   )
 }
 
+// Table
+const TableComponent = ({ children }: Props) => {
+  return (
+    <TableContainer  component={Paper}>
+      <Table size="small">
+        {children}
+      </Table>
+    </TableContainer>
+  )
+}
+
 const options = {
   overrides: {
     h1: { component: H2 },
@@ -64,6 +82,12 @@ const options = {
     p:  { component: Typography, props: { paragraph: true } },
     a:  { component: A },
     li: { component: List },
+    table: { component: TableComponent },
+    tbody: { component: TableBody },
+    thead: { component: TableHead },
+    th: { component: TableCell },
+    tr: { component: TableRow },
+    td: { component: TableCell },
   },
 };
 
