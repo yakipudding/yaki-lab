@@ -63,3 +63,12 @@ export interface TagInterface {
   newTagKey: number,
   tags: string[]
 }
+
+export interface AboutInterface {
+  icon: string,
+  github: string,
+  twitter: string,
+  qiita: string,
+  content: string,
+  description: string,
+}

@@ -1,4 +1,5 @@
 import { database } from '../../config/FirebaseConfig'
+import { AboutInterface } from '../Definition/Interfaces'
 
 // テーブル
 const aboutDoc = database.collection('About').doc('about')
@@ -8,7 +9,14 @@ export const getAbout = async () => {
   const doc = await aboutDoc.get()
   const data = doc.data()
   if (data){
-    return data.Content
+    return {
+      icon: data.Icon,
+      github: data.GitHub,
+      twitter: data.Twitter,
+      qiita: data.Qiita,
+      content: data.Content,
+      description: data.Description,
+    }
   }
   else{
     return null
@@ -16,9 +24,14 @@ export const getAbout = async () => {
 }
 
 // 記事編集（編集画面）
-export const updateAbout = async (content: string) => {
+export const updateAbout = async (about: AboutInterface) => {
   await aboutDoc.set({
-    Content: content,
+    Icon: about.icon,
+    GitHub: about.github,
+    Twitter: about.twitter,
+    Qiita: about.qiita,
+    Content: about.content,
+    Description: about.description,
   })
   return true
 }

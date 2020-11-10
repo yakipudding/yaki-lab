@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import { Grid } from '@material-ui/core/'
 import { registerImage } from '../../../biz/StorageAccessor'
+import { AboutInterface } from '../../../biz/Definition/Interfaces'
 import { InputChangeEvent } from '../../../biz/Definition/Types'
 import ImageUploadButton from '../Form/ImageUpload';
-import ContentTextField from '../Form/ContentTextField';
 import SubmitButton from '../Form/SubmitButton';
-import MarkdownPreviewField from '../Form/MarkdownPreviewField';
+import CustomTextField from '../Form/CustomTextField';
+import TextField from '@material-ui/core/TextField/TextField';
 
 // Aboutフォーム
 
-function AboutForm(props: {initContent : string, submit: (content: string) => void }) {
+function AboutForm(props: {init : AboutInterface, submit: (about: AboutInterface) => void }) {
   // state init
-  const [values, setValues] = useState(props.initContent);
+  const [values, setValues] = useState(props.init);
 
   // action
-  const handleChange = (event: InputChangeEvent) => {
-    setValues(event.target.value);
+  const handleChange = (name: string) => (event: InputChangeEvent) => {
+    setValues({ ...values, [name]: event.target.value });
   };
 
   const handleChangeImage = (event: InputChangeEvent) => {
@@ -25,7 +26,7 @@ function AboutForm(props: {initContent : string, submit: (content: string) => vo
       if(file){
         const saveFile = file as File
         registerImage(saveFile, 'About').then((url) => {
-          setValues(values + `\n![${saveFile.name}](${url})`);
+          setValues({ ...values, icon: url });
         })
       }
     }
@@ -39,17 +40,61 @@ function AboutForm(props: {initContent : string, submit: (content: string) => vo
     <form onSubmit={handleSubmit}>
       <Grid container>
         <Grid item xs={12}>
-          <ImageUploadButton handleChangeImage={handleChangeImage} />
+          <TextField
+            label="このサイトの説明"
+            id="description"
+            margin="dense"
+            variant="outlined"
+            fullWidth
+            multiline
+            onChange={handleChange('description')}
+            value={values.description}
+            InputLabelProps={{ shrink: true }}
+          />
         </Grid>
         <Grid item xs={12}>
-          <Grid container spacing={3}>
-            <Grid item xs={6}>
-              <ContentTextField content={values} handleChange={handleChange} />
-            </Grid>
-            <Grid item xs={6}>
-              <MarkdownPreviewField content={values} />
-            </Grid>
-          </Grid>
+          <ImageUploadButton handleChangeImage={handleChangeImage} />
+          <img src={values.icon} width="120px" />
+          <p>
+            {values.icon}
+          </p>
+        </Grid>
+        <Grid item xs={12}>
+          <CustomTextField
+            fieldName="github"
+            labelName="GitHubレポジトリ"
+            value={values.github}
+            handleChange={handleChange}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <CustomTextField
+            fieldName="twitter"
+            labelName="Twitter"
+            value={values.twitter}
+            handleChange={handleChange}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <CustomTextField
+            fieldName="qiita"
+            labelName="Qiita"
+            value={values.qiita}
+            handleChange={handleChange}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            label="プロフィール"
+            id="content"
+            margin="dense"
+            variant="outlined"
+            fullWidth
+            multiline
+            onChange={handleChange('content')}
+            value={values.content}
+            InputLabelProps={{ shrink: true }}
+          />
         </Grid>
         <Grid item xs={12}>
           <SubmitButton handleSubmit={handleSubmit} />

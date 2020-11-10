@@ -7,6 +7,7 @@ import { ItemType } from '../../../biz/Definition/Enums'
 import TagLink from '../../common/Link/TagLink'
 import { getArticles } from '../../../biz/DBAccessor/ArticleTable'
 import Loading from '../../common/FeedBack/Loading'
+import About from '../About/About'
 
 // 記事一覧
 const Articles = (props: TagPageProps) => {
@@ -78,6 +79,9 @@ const Articles = (props: TagPageProps) => {
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <TagLink tags={values.tags} tagFilter={tagFilter} filter={values.filter} />
+            </Grid>
+            <Grid item xs={12}>
+              <About />
             </Grid>
           </Grid>
         </Grid>

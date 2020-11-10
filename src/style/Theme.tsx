@@ -54,6 +54,9 @@ Theme.typography.h5 = {
   fontSize: '0.8rem',
   color: "#9e9e9e",
 };
+Theme.typography.h6 = {
+  fontSize: '0.75rem',
+};
 // Product Name
 Theme.typography.subtitle1 = {
   fontSize: '1.9rem',

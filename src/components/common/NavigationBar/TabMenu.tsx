@@ -26,7 +26,7 @@ const TabMenu = (props: TabMenuProps) => {
       <Tabs value={props.index} centered>
         <Tab label="ARTICLES" {...a11yProps(0)} href="/" />
         <Tab label="PRODUCTS" {...a11yProps(1)} href="/Products" />
-        <Tab label="ABOUT" {...a11yProps(2)} href="/About" />
+        {/* <Tab label="ABOUT" {...a11yProps(2)} href="/About" /> */}
       </Tabs>
     );
   }
