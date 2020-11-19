@@ -1,5 +1,5 @@
 import { database } from '../../config/FirebaseConfig'
-import { ArticleInterface, ArticleViewInterface } from '../Definition/Interfaces'
+import { ArticleInterface, ArticleViewInterface, ArticleParamsInterface } from '../Definition/Interfaces'
 import moment from 'moment'
 
 // テーブル
@@ -30,6 +30,23 @@ export const getArticles = async (includePrivate?: boolean) => {
   }
 
   return articles
+}
+
+export const getArticleIds = async () => {
+  const articlesDoc = await articlesViewDoc.get()
+  const articlesData = articlesDoc.data()
+  let articleIds = [] as ArticleParamsInterface[]
+  if(articlesData){
+    articlesData.Articles.forEach((article: ArticleViewInterface) => {
+      articleIds.push({
+        params: {
+          id: article.Id,
+        },
+      })
+    })
+  }
+
+  return articleIds
 }
 
 // 記事取得（記事詳細・記事編集）
@@ -121,7 +138,7 @@ export const updateView = async () => {
   const articlesSnapshot = await articlesTable.orderBy("Date", "desc").get()
   let articlesView = [] as ArticleViewInterface[]
   let adminArticlesView = [] as ArticleViewInterface[]
-  articlesSnapshot.forEach((articleDoc) => {
+  articlesSnapshot.forEach((articleDoc: any) => {
     const article = articleDoc.data()
     if(!article.Private){
       articlesView.push({

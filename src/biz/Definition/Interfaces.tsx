@@ -72,3 +72,11 @@ export interface AboutInterface {
   content: string,
   description: string,
 }
+
+export interface ArticleParamsInterface {
+  params: { id: string },
+}
+
+export interface ProductParamsInterface {
+  params: { productId: string, id: string },
+}

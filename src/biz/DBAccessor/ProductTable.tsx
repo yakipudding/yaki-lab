@@ -1,5 +1,5 @@
 import { database } from '../../config/FirebaseConfig'
-import { ProductInterface, ProductArticleInterface, ProductViewInterface, ProductArticleViewInterface } from '../Definition/Interfaces'
+import { ProductInterface, ProductArticleInterface, ProductViewInterface, ProductArticleViewInterface, ProductParamsInterface } from '../Definition/Interfaces'
 import moment from 'moment'
 
 // テーブル
@@ -34,6 +34,48 @@ export const getProducts = async (includePrivate?: boolean) => {
   }
 
   return products
+}
+
+export const getProductArticleIds = async () => {
+  const productsDoc = await productsViewDoc.get()
+  const productsData = productsDoc.data()
+  let promises = [] as Promise<ProductParamsInterface[]>[]
+  let productArticleIds = [] as ProductParamsInterface[]
+  if(productsData){
+    productsData.Products.forEach((product: ProductViewInterface) => {
+      const productId = product.ProductId
+      promises.push(getProductArticleIdsByProductId(productId))
+    })
+
+    let productArticleIdsList = await Promise.all(promises);
+    productArticleIdsList.forEach(idList => idList.forEach( ids => productArticleIds.push(ids)))
+  }
+
+  return productArticleIds
+}
+const getProductArticleIdsByProductId = async (productId: string) => {
+  // プロダクト記事一覧取得
+  const productArticlesDoc = await productArticlesView.doc(productId).get()
+  const productArticlesData = productArticlesDoc.data()
+  const productArticles = [] as ProductParamsInterface[]
+  if(productArticlesData){
+    productArticlesData.Pages.forEach((productArticle: ProductArticleViewInterface) => {
+      productArticles.push({
+        params: {
+          productId: productId,
+          id: productArticle.ArticleId,
+        }
+      })
+    })
+    // Topは固定追加
+    productArticles.push({
+      params: {
+        productId: productId,
+        id: 'Top',
+      }
+    })
+  }
+  return productArticles
 }
 
 // プロダクト記事取得（プロダクト記事詳細）
@@ -237,7 +279,7 @@ export const updateProductsView = async () => {
   const productsSnapshot = await productsTable.orderBy("Date", "desc").get()
   let productsView = [] as ProductViewInterface[]
   let adminProductsView = [] as ProductViewInterface[]
-  productsSnapshot.forEach((productDoc) => {
+  productsSnapshot.forEach((productDoc: any) => {
     const product = productDoc.data()
     if(!product.Private){
       productsView.push({
@@ -272,7 +314,7 @@ export const updateProductArticlesView = async (productId: string) => {
   // プロダクト記事一覧取得
   const productArticlesSnapshot = await productArticlesTable.doc(productId).collection("Pages").orderBy("Order").get()
   const productArticlesPage = [] as ProductArticleViewInterface[]
-  productArticlesSnapshot.forEach(async (productArticleDoc) => {
+  productArticlesSnapshot.forEach(async (productArticleDoc: any) => {
     const productArticle = productArticleDoc.data()
     const productArticleId = productArticleDoc.id
 
